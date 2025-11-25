@@ -18,7 +18,6 @@ local developer = getgenv().catvapedev or license.Developer or false
 local closet = getgenv().closet or license.Closet or false
 
 getgenv().username = username or license.Username
-getgenv().password = password or license.Password
 getgenv().catuser = getgenv().username
 
 local cloneref = cloneref or function(ref) return ref end
