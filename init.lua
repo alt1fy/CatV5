@@ -205,9 +205,9 @@ local httpService = cloneref(game:GetService('HttpService'))
 local UserInputService = game:GetService('UserInputService')
 
 local success, commitdata = pcall(function()
-    local commitinfo = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/commits'))[1]
+    local commitinfo = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/alt1fy/CatV5/commits'))[1]
     if commitinfo and type(commitinfo) == 'table' then
-        local fullinfo = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/commits/'.. commitinfo.sha))
+        local fullinfo = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/alt1fy/CatV5/commits/'.. commitinfo.sha))
         fullinfo.hash = commitinfo.sha:sub(1, 7)
         return fullinfo
     end
@@ -243,7 +243,7 @@ local function downloadFile(path, func)
 		local suc, res = pcall(function()
 			local subbed = path:gsub('catrewrite/', '')
 			subbed = subbed:gsub(' ', '%%20')
-			return game:HttpGet('https://raw.githubusercontent.com/new-qwertyui/CatV5/'..readfile('catrewrite/profiles/commit.txt')..'/'..subbed, true)
+			return game:HttpGet('https://raw.githubusercontent.com/alt1fy/CatV5/'..readfile('catrewrite/profiles/commit.txt')..'/'..subbed, true)
 		end)
 		if not suc or res == '404: Not Found' then
 			error(res)
@@ -289,7 +289,7 @@ if not isfolder('catrewrite') or #listfiles('catrewrite') <= 6 or not isfolder('
     writefile('catrewrite/profiles/commit.txt', commitdata.sha)
 	new = true
 	if not assexecutorhurtsmybutt then
- 		local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/contents/profiles'))
+ 		local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/alt1fy/CatV5/contents/profiles'))
 		for _, v in req do
 			if v.path ~= 'profiles/commit.txt' then
 				makestage(2, `Downloading required files\n({v.path})`)
@@ -319,7 +319,7 @@ if not shared.VapeDeveloper then
 		wipeFolder('catrewrite/libraries')
 
 		if table.find({'Xeno', 'Solara'}, ({identifyexecutor()})[1]) or debug.setconstant == nil then
-			local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/new-qwertyui/CatV5/contents/cache'))
+			local req = httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/alt1fy/CatV5/contents/cache'))
 			for _, v in req do
 				makestage(2, `Downloading required files\n({v.path})`)
 				downloadFile(`catrewrite/{v.path}`)
